@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" scope="prototype">
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+    </bean>
+
+    <bean id="userDao" scope="prototype" class="dao.implement.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="loginService" class="services.implement.LoginServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="userAction" class="actions.UserAction" scope="prototype">
+        <property name="loginService" ref="loginService"/>
+    </bean>
+
+
+</beans>
+
