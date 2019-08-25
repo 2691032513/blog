@@ -15,7 +15,7 @@
     <bean id="loginService" class="services.implement.LoginServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
-
+    <!--  aaaaa      -->
     <bean id="userAction" class="actions.UserAction" scope="prototype">
         <property name="loginService" ref="loginService"/>
     </bean>
